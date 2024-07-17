@@ -1,2 +1,5 @@
+from pars_vds import start
+
+
 if __name__ == '__main__':
-    import pars_vds
+    start(2)

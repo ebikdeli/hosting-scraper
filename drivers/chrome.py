@@ -1,8 +1,7 @@
 from selenium import webdriver
-import time
 
 
-def start_driver(headless:bool=True, ignore_image:bool=True, silent_mode:bool=True, disable_css:bool=True) -> object:
+def start_driver(headless:bool=True, ignore_image:bool=True, silent_mode:bool=True, disable_css:bool=True, timeout:int=20, implicit_wait:float=5) -> object:
     """Start chrome selenium driver with needed options. If successful returns Chrome Driver object otherwise return None"""
     # Add chrome options to enhance performance
     try:
@@ -49,6 +48,9 @@ def start_driver(headless:bool=True, ignore_image:bool=True, silent_mode:bool=Tr
         options.add_argument("--disable-features=VizDisplayCompositor")
         # Add options to chrome driver
         driver = webdriver.Chrome(options=options)
+        driver.set_page_load_timeout(timeout)
+        driver.implicitly_wait(implicit_wait)
+        driver.set_window_size(800, 600)
     except Exception as e:
         print(f'ERROR HAPPENED: {e.__str__()}')
     return driver
