@@ -50,7 +50,7 @@ def start_driver(headless:bool=True, ignore_image:bool=True, silent_mode:bool=Tr
         driver = webdriver.Chrome(options=options)
         driver.set_page_load_timeout(timeout)
         driver.implicitly_wait(implicit_wait)
-        driver.set_window_size(800, 600)
+        driver.set_window_size(1600, 1200)
     except Exception as e:
         print(f'ERROR HAPPENED: {e.__str__()}')
     return driver
