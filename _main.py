@@ -1,4 +1,5 @@
 from hosts.parsvds import operation as parsvds_operation
+from hosts.iranserver import operation as iranserver_operation
 from db_connection import connect_mysql, close_mysql
 from dotenv import dotenv_values
 import time
@@ -14,8 +15,10 @@ if __name__ == '__main__':
                                 database=config['DATABASE'],
                                 user=config['USER'],
                                 password=config['PASSWORD'])
+    # parsvds_operation.start(connection, 3)
+    # iranserver_operation.start(connection, 4)
     # Close connection
-    close_mysql(config)
-    # parsvds_operation.start(3)
+    if connection:
+        close_mysql(connection)
     print('OPERATION SUCCESSFUL')
     # time.sleep(5)

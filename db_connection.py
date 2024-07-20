@@ -23,12 +23,22 @@ def connect_mysql(host:str='localhost', port:int=3306, database:str='hosts_db', 
                                             user=user,
                                             password=password)
         if connection.is_connected():
-            db_Info = connection.get_server_info()
-            print("Connected to MySQL Server version ", db_Info)
             cursor = connection.cursor()
-            cursor.execute("select database();")
-            record = cursor.fetchone()
-            print("You're connected to database: ", record)
+            # Create 'hosts' table and if it's not exist
+            try:
+                sql = """CREATE TABLE host (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        host_name VARCHAR(255) NOT NULL,
+                        product_name VARCHAR(255) NOT NULL,
+                        url LONGTEXT NOT NULL,
+                        month INT DEFAULT 1,
+                        price INT DEFAULT 0,
+                        date DATE DEFAULT (CURRENT_DATE)
+                        );
+                        """
+                cursor.execute(sql)
+            except Error:
+                pass
             return connection
     except Error as e:
         print("Error while connecting to MySQL", e)
