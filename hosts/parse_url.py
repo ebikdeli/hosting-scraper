@@ -2,6 +2,9 @@ import os
 import validators
 
 
+HOST_LIST = ['parsvds', 'iranserver']
+
+
 def extract_host_file_urls(host_name:str) -> set:
     """Receive host_name -eg: 'parsvds'- as input and return urls founded in 'host_name.txt' as a set"""
     url_set = set()
