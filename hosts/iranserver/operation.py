@@ -7,7 +7,7 @@ import time
 
 def start(connection:object, wait:int=1) -> None:
     """Start scraping iranserver"""
-    driver = chrome.start_driver(False)
+    driver = chrome.start_driver(False, False)
     if driver is not None:
         # Look for specified urls in 'parsvds.txt' file
         urls = extract_host_file_urls('iranserver')
@@ -15,10 +15,12 @@ def start(connection:object, wait:int=1) -> None:
             driver.get(url)
             time.sleep(wait)
             prices = []
-            products_elem = driver.find_elements(By.CSS_SELECTOR, '#iran .owl-item')
-            for pe in products_elem:
-                price = pe.text.replace(',', '')
-                for p in price.split(' '):
-                    if p.isdigit():
-                        print(int(p))
+            products_elem = driver.find_elements(By.CSS_SELECTOR, '#iran .owl-item h4')
+            for p in products_elem:
+                print(p.text)
+            # for pe in products_elem:
+            #     price = pe.text.replace(',', '')
+            #     for p in price.split(' '):
+            #         if p.isdigit():
+            #             print(int(p))
         driver.close()

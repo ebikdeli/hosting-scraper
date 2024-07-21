@@ -16,7 +16,7 @@ if __name__ == '__main__':
                                 user=config['USER'],
                                 password=config['PASSWORD'])
     # parsvds_operation.start(connection, 3)
-    # iranserver_operation.start(connection, 4)
+    iranserver_operation.start(connection, 7)
     # Close connection
     if connection:
         close_mysql(connection)
