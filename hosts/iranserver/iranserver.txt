@@ -1,6 +1,5 @@
 https://www.iranserver.com/web-hosting/linux/
-afds
-    https://www.iranserver.com/web-hosting/python/
 
-https://www.iranserver.com/vps/europe/  
-    https://www.iranserver.com/vps/europe/  
+https://www.iranserver.com/web-hosting/python/
+
+https://www.iranserver.com/vps/europe/
